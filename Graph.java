@@ -1,7 +1,7 @@
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.*;
 
-
-public class Graph {
+public class Graph extends JPanel{
     private Vertex[] V;
     private Edge[] E;
 
@@ -10,11 +10,15 @@ public class Graph {
         this.E = E;
     }
 
-    public void draw() {
-        JFrame frame = new JFrame("Graph-Visualizer-Java");
-        frame.setSize(400,400);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.setColor(Color.black);
+        for(Vertex v:V) {
+            g.fillOval(v.getX()-10,v.getY()-10,20,20);
+        }
+        for(Edge e:E) {
+            g.drawLine(e.getV1().getX(),e.getV1().getY(),e.getV2().getX(),e.getV2().getY());
+        }
     }
 
     /**
