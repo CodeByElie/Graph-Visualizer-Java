@@ -13,12 +13,15 @@ public class Graph extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(Color.black);
-        for(Vertex v:V) {
-            g.fillOval(v.getX()-10,v.getY()-10,20,20);
-        }
+        setBackground(Color.white);
+        g.setColor(Color.gray);
         for(Edge e:E) {
             g.drawLine(e.getV1().getX(),e.getV1().getY(),e.getV2().getX(),e.getV2().getY());
+        }
+        g.setColor(Color.black);
+        for(Vertex v:V) {
+            g.fillOval(v.getX()-8,v.getY()-8,16,16);
+            g.drawString(v.getLabel(), v.getX()-8,v.getY()-8);
         }
     }
 
