@@ -10,7 +10,8 @@ public class Graph extends JPanel{
         this.E = E;
     }
 
-    public void paintComponent(Graphics g) {
+    @Override
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.black);
         for(Vertex v:V) {
