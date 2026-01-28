@@ -4,7 +4,6 @@ public class Vertex {
 
     public Vertex(int x, int y) {this(x,y,"");}
     public Vertex(String label) {this(0,0,label);}
-
     public Vertex(int x, int y, String label) {
         this.label = label;
         this.x = x;
