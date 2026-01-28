@@ -1,13 +1,14 @@
-import java.util.Random;
-
 public class Vertex {
     private String label;
     private int x, y;
-    public Vertex(String label) {
-        Random random = new Random();
+
+    public Vertex(int x, int y) {this(x,y,"");}
+    public Vertex(String label) {this(0,0,label);}
+
+    public Vertex(int x, int y, String label) {
         this.label = label;
-        x = random.nextInt(50,350);
-        y = random.nextInt(50,350);
+        this.x = x;
+        this.y = y;
     }
 
     /**

@@ -1,9 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
+
 
 public class Graph extends JPanel{
     private Vertex[] V;
     private Edge[] E;
+    Random random = new Random();
 
     public Graph(Vertex[] V, Edge[] E) {
         this.V = V;
@@ -23,6 +26,11 @@ public class Graph extends JPanel{
             g.fillOval(v.getX()-8,v.getY()-8,16,16);
             g.drawString(v.getLabel(), v.getX()-8,v.getY()-8);
         }
+    }
+
+    public void update() {
+        
+        repaint();
     }
 
     /**
