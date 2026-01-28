@@ -20,9 +20,17 @@ public class Vertex {
      * @return x
      */
     public int getX() {return x;}
+    /**
+     * To set the x coordinate of the vertex
+     */
+    public void setX(int x) {this.x = x;}
      /**
      * To get the y coordinate of the vertex
      * @return y
      */
     public int getY() {return y;}
+    /**
+     * To set the y coordinate of the vertex
+     */
+    public void setY(int y) {this.y = y;}
 }
