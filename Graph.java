@@ -1,15 +1,24 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.*;
 
 
 public class Graph extends JPanel{
     private Vertex[] V;
     private Edge[] E;
+    private Map<Vertex,Set<Vertex>> AdjacencyList = new HashMap<Vertex,Set<Vertex>>(); 
     private int distance = 100;
 
     public Graph(Vertex[] V, Edge[] E) {
         this.V = V;
         this.E = E;
+        for(Vertex v:V) {
+            AdjacencyList.put(v,new HashSet<Vertex>());
+        }
+        for(Edge e:E) {
+            AdjacencyList.get(e.getV1()).add(e.getV2());
+            AdjacencyList.get(e.getV2()).add(e.getV1());
+        }
     }
 
     @Override
@@ -20,9 +29,10 @@ public class Graph extends JPanel{
         for(Edge e:E) {
             g.drawLine(e.getV1().getX(),e.getV1().getY(),e.getV2().getX(),e.getV2().getY());
         }
-        g.setColor(Color.black);
         for(Vertex v:V) {
+            g.setColor(new Color(v.getColor()[0],v.getColor()[1],v.getColor()[2]));
             g.fillOval(v.getX()-8,v.getY()-8,16,16);
+            g.setColor(Color.black);
             g.drawString(v.getLabel(), v.getX()-10,v.getY()-10);
         }
     }
@@ -49,6 +59,14 @@ public class Graph extends JPanel{
             v.setY(v.getY()+dy);
         }
         repaint();
+    }
+
+    /**
+     * To get the adjacency list of the graph
+     * @return the adjacency list of the graph
+     */
+    public Map<Vertex,Set<Vertex>> getAdjacencyList(){
+        return AdjacencyList;
     }
 
     /**
